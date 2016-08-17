@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet,TouchableWithoutFeedback, Text, Platform } from 'react-native'
+import { View, StyleSheet,TouchableWithoutFeedback , Text, Platform } from 'react-native'
 
 class MenuDropdown extends Component {
 
@@ -11,24 +11,15 @@ class MenuDropdown extends Component {
     }
     
     render() {
-        console.log('Pops ', this.props.shouldShow)
         if(this.props.shouldShow) {
             return (
                 <View style={{ flex: 1, position: 'absolute', top: 0, bottom: 0, right: 0, left: 0 }} >
                     <TouchableWithoutFeedback onPress={this.props.onClick}>
-                        <View style={{ flex: 1 }}/>
+                        <View style={{ flex: 1 }} />
                     </TouchableWithoutFeedback>
 
                     <View style={styles.menuContainer}>
-                        <TouchableWithoutFeedback onPress={() => this.props.cb() }>
-                            <View><Text>Something</Text></View>
-                        </TouchableWithoutFeedback>
-                        <TouchableWithoutFeedback onPress={() => this.props.cb() }>
-                            <View><Text>Something</Text></View>
-                        </TouchableWithoutFeedback>
-                        <TouchableWithoutFeedback onPress={() => this.props.cb() }>
-                            <View><Text>Something</Text></View>
-                        </TouchableWithoutFeedback>
+                        {this.props.children}
                     </View>
                 </View>
             )
@@ -60,5 +51,10 @@ const styles = StyleSheet.create({
     })
     }
 })
+
+MenuDropdown.PropTypes = {
+    onClick: React.PropTypes.func.isRequired,
+    children: React.PropTypes.any
+}
 
 module.exports = MenuDropdown

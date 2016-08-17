@@ -25,4 +25,8 @@ const styles = StyleSheet.create({
     }
 })
 
+Menu.PropTypes = {
+    onClick: React.PropTypes.func.isRequired
+}
+
 module.exports = Menu

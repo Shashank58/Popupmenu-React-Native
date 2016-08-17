@@ -9,6 +9,7 @@ import { View, Text, AppRegistry } from 'react-native';
 
 import Menu from './Menu'
 import MenuDropdown from './MenuDropdown'
+import MenuItem from './MenuItem'
 
 class PopupMenu extends Component {
     constructor(props) {
@@ -19,18 +20,31 @@ class PopupMenu extends Component {
     }
 
     render() {
-        return(
-            <View style={{flex: 1}}>
+        return (
+            <View style={{ flex: 1 }}>
                 <View style={{
-                    flexDirection: 'row',
-                    backgroundColor: 'black',
-                    marginTop: 20,
+                    flexDirection: 'row', backgroundColor: 'black', marginTop: 20,
                     justifyContent: 'flex-end'
-                    }}>
-                    <Menu onClick={() => this.setState({isMenuClicked: true})} />
+                }}>
+                    <Menu onClick={() => this.setState({ isMenuClicked: true }) } />
                 </View>
-                <MenuDropdown onClick={() => this.setState({isMenuClicked: false})}
-                    shouldShow={this.state.isMenuClicked}/>
+                <MenuDropdown onClick={() => this.setState({ isMenuClicked: false }) }
+                    shouldShow={this.state.isMenuClicked}>
+                    <MenuItem onClick={() => {
+                            this.setState({isMenuClicked: false})
+                        }}>
+                        <Text>Something</Text>
+                    </MenuItem>
+                    <MenuItem>
+                        <Text>Something</Text>
+                    </MenuItem>
+                    <MenuItem>
+                        <Text>Something</Text>
+                    </MenuItem>
+                    <MenuItem>
+                        <Text>Something</Text>
+                    </MenuItem>
+                </MenuDropdown>
             </View>
         )
     }
